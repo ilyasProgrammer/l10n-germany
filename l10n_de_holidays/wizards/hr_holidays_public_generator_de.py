@@ -221,7 +221,6 @@ class HrHolidaysPublicGenerator(models.TransientModel):
                 'year_id': existing_holidays.id
             })
 
-    @api.multi
     def action_delete_holidays(self, existing_holidays):
         self.ensure_one()
         if existing_holidays:
@@ -229,7 +228,6 @@ class HrHolidaysPublicGenerator(models.TransientModel):
                 holiday_line.unlink()
         return existing_holidays
 
-    @api.multi
     def action_generate_de_holidays(self):
         public_holiday_obj = self.env['hr.holidays.public']
 
@@ -258,7 +256,6 @@ class HrHolidaysPublicGenerator(models.TransientModel):
             'type': 'ir.actions.act_window_close',
         }
 
-    @api.multi
     def action_copy_de_holidays(self):
         public_holiday_obj = self.env['hr.holidays.public']
         public_holiday_line_obj = self.env['hr.holidays.public.line']
